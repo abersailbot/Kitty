@@ -16,5 +16,5 @@ $ cd kitty-provisioner
 Edit [`password`](password) and change the password, then run
 
 ```bash
-$ ./provisioner
+$ ./provision
 ```
