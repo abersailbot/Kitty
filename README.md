@@ -1,6 +1,20 @@
-kitty-provision
-===============
+kitty-provisioner
+=================
 
 Confiure a raspbian image with for use inside kitty.
 
-Set the password for the wifi connection by editing the `password` file.
+Installing
+----------
+
+Do the following:
+
+```bash
+$ git clone https://github.com/abersailbot/kitty-provisioner.git
+$ cd kitty-provisioner
+```
+
+Edit [`password`](password) and change the password, then run
+
+```bash
+$ ./provisioner
+```
