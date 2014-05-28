@@ -13,6 +13,10 @@ apt-get -y install \
 git clone https://github.com/kragniz/dot-files.git
 make -C dot-files
 
+cp -v ./etc/50-rowind.rules /etc/udev/rules.d/
+cp -v ./etc/51-gps.rules /etc/udev/rules.d/
+udevadm control --reload-rules
+
 cp -v ./etc/hostname /etc/hostname
 cp -v ./etc/motd /etc/motd
 
@@ -50,4 +54,9 @@ chmod 755 /usr/sbin/hostapd
 
 service hostapd start
 update-rc.d hostapd enable
-update-rc.d isc-dhcp-server enable 
+update-rc.d isc-dhcp-server enable
+
+git clone https://github.com/kragniz/librowind.git
+pushd librowind
+make install
+popd
