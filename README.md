@@ -7,8 +7,8 @@ This sets up networking to act as an access point, installs [config
 files](https://github.com/kragniz/dot-files) and sets up udev rules for the GPS
 and wind sensor.
 
-With this configuration, the gps appears on `/dev/gps` and the RO Wind on
-`/dev/rowind`.
+With this configuration, the gps appears on `/dev/gps`, the RO Wind on
+`/dev/rowind` and the Arduino on `/dev/arduino`.
 
 Installing
 ----------
