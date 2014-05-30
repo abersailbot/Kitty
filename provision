@@ -11,6 +11,7 @@ apt-get -y install \
     unzip \
 
 git clone https://github.com/kragniz/dot-files.git
+sed -i "'29,30d" dot-files/gitconfig
 make -C dot-files
 
 cp -v ./etc/50-rowind.rules /etc/udev/rules.d/
@@ -20,8 +21,11 @@ udevadm control --reload-rules
 cp -v ./etc/hostname /etc/hostname
 cp -v ./etc/motd /etc/motd
 
+cp -v ./etc/sshd_config /etc/ssh/sshd_config
+	service ssh restart
 cp -v ./etc/dhcpd.conf /etc/dhcp/dhcpd.conf
 cp -v ./etc/isc-dhcp-server /etc/default/isc-dhcp-server
+	service isc-dhcp-server start
 cp -v ./etc/interfaces /etc/network/interfaces
 cp -v ./etc/hostapd /etc/default/hostapd
 cp -v ./etc/sysctl.conf /etc/sysctl.conf
@@ -50,11 +54,8 @@ mv -v hostapd /usr/sbin
 chmod 755 /usr/sbin/hostapd
 
 service hostapd start
-service isc-dhcp-server start
 update-rc.d hostapd enable
 update-rc.d isc-dhcp-server enable
 
 git clone https://github.com/kragniz/librowind.git
-pushd librowind
-make install
-popd
+make -C librowind install
