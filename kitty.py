@@ -8,7 +8,7 @@ import gps as gpsd
 from rowind import Rowind
 
 import boatd
-assert boatd.VERSION == 1.1
+#assert boatd.VERSION == 1.1
 
 class Arduino(object):
     '''The arduino and basic communications with devices attached to it'''
@@ -48,47 +48,50 @@ class Arduino(object):
         return self.send_command('s{}'.format(amount)).get('sail')
 
 
+
+
+class KittyDriver(boatd.BaseBoatdDriver):
+    def __init__(self):
+        self.arduino = Arduino('/dev/arduino')
+        self.rowind = Rowind('/dev/rowind')
+        self.gps = gpsd.gps(mode=gpsd.WATCH_ENABLE)
+        
+    def heading(self):
+        return self.arduino.get_compass()
+
+    def wind_direction(self):
+        self.rowind.update()
+        return self.rowind.direction
+    
+    def wind_speed(self):
+        #TODO can kitty get windspeed?
+        pass
+    
+    def position(self):
+        if self.gps.waiting(timeout=2):
+            fix = self.gps.next()
+            i = 0
+            while fix['class'] != 'TPV':
+                if self.gps.waiting(timeout=2) and i < 15:
+                    fix = self.gps.next()
+                    i += 1
+                else:
+                    return (None, None)
+
+            return (fix.lat, fix.lon)
+
+        else:
+            return (None, None)
+
+    def rudder(self, angle):
+        ratio = (1711/22.5) / 8 # ratio of angle:microseconds
+        amount = 1500 + (angle * ratio)
+        self.arduino.set_rudder(amount - 65)
+    
+    def sail(self, angle):
+        self.arduino.set_sail(angle)
+
 driver = boatd.Driver()
-arduino = Arduino('/dev/arduino')
-rowind = Rowind('/dev/rowind')
-gps = gpsd.gps(mode=gpsd.WATCH_ENABLE)
-
-
-@driver.heading
-def kitty_heading():
-    return arduino.get_compass()
-
-@driver.wind_direction
-def kitty_wind():
-    rowind.update()
-    return rowind.direction
-
-@driver.position
-def kitty_position():
-    if gps.waiting(timeout=2):
-        fix = gps.next()
-        i = 0
-        while fix['class'] != 'TPV':
-            if gps.waiting(timeout=2) and i < 15:
-                fix = gps.next()
-                i += 1
-            else:
-                return (None, None)
-
-        return (fix.lat, fix.lon)
-
-    else:
-        return (None, None)
-
-@driver.rudder
-def kitty_rudder(angle):
-    ratio = (1711/22.5) / 8 # ratio of angle:microseconds
-    amount = 1500 + (angle * ratio)
-    arduino.set_rudder(amount - 65)
-
-@driver.sail
-def kitty_sail(angle):
-    arduino.set_sail(angle)
 
 if __name__ == '__main__':
     import time
