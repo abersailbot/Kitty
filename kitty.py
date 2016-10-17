@@ -55,6 +55,8 @@ class KittyDriver(boatd.BaseBoatdDriver):
         self.arduino = Arduino('/dev/arduino')
         self.rowind = Rowind('/dev/rowind')
         self.gps = gpsd.gps(mode=gpsd.WATCH_ENABLE)
+        self.previous_lat = 0
+        self.previous_long = 0
         
     def heading(self):
         return self.arduino.get_compass()
@@ -76,12 +78,14 @@ class KittyDriver(boatd.BaseBoatdDriver):
                     fix = self.gps.next()
                     i += 1
                 else:
-                    return (None, None)
+                    return (self.previous_lat, self.previous_long)
 
+            self.previous_lat = fix.lat
+            self.previous_long = fix.lon
             return (fix.lat, fix.lon)
 
         else:
-            return (None, None)
+            return (self.previous_lat, self.previous_long)
 
     def rudder(self, angle):
         ratio = (1711/22.5) / 8 # ratio of angle:microseconds
