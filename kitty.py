@@ -66,7 +66,8 @@ class KittyDriver(boatd.BaseBoatdDriver):
         return self.rowind.direction
     
     def wind_speed(self):
-        #TODO can kitty get windspeed?
+        self.rowind.update()
+        return self.rowind.speed
         pass
     
     def position(self):
