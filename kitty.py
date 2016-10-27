@@ -48,8 +48,6 @@ class Arduino(object):
         return self.send_command('s{}'.format(amount)).get('sail')
 
 
-
-
 class KittyDriver(boatd.BaseBoatdDriver):
     def __init__(self):
         self.arduino = Arduino('/dev/arduino')
@@ -68,7 +66,6 @@ class KittyDriver(boatd.BaseBoatdDriver):
     def wind_speed(self):
         self.rowind.update()
         return self.rowind.speed
-        pass
     
     def position(self):
         if self.gps.waiting(timeout=2):
@@ -97,6 +94,7 @@ class KittyDriver(boatd.BaseBoatdDriver):
         self.arduino.set_sail(angle)
 
 driver = boatd.Driver()
+
 
 if __name__ == '__main__':
     import time
