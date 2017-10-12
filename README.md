@@ -3,63 +3,38 @@ AberSailbot Kitty
 
 Contents
 --------
-1. Software Stack
-  1. Os Dependencies
-    * Gpsd
-    * Python3
-    * Platformio
-  2. boatd
-    * Driver
-    * Behaviour
-  3. Arduino Interface
-2. Rigging
-  1. Catamaran
-    * High Wind
-    * Low Wind
-3. Electronics
-  1. Captain H. Morgan
-  2. Power Setup
-  3. Rowind Interface
-4. Hull
+1.  Software Stack
+    1.  Os Dependencies
+        *   Gpsd
+        *   Python3
+        *   Platformio
+    2.  boatd
+        *   Driver
+        *   Behaviour
+    3.  Arduino Interface
+2.  Electronics
+    1.  Captain H. Morgan
+    2.  Power Setup
+    3.  Rowind Interface
+3.  Rigging
+    1.  Catamaran
+        *   High Wind
+        *   Low Wind
+4.  Hull
 
-
-
-
-Hull
-----
-
-These are the files used in the construction of the hull.
-
-`hull.igs` was created by [Paul
-Miller](http://www.usna.edu/Users/naome/phmiller/), and is public domain.
-
-<<<<<<< HEAD
-kitty-arduino
-=============
-
-Code to run on kitty's arduino.
-
-Depends on [CMPS10](https://github.com/kragniz/CMPS10) to interact with the
-compass.
-
-=======
 kitty-provisioner
-=================
+-----------------
 
 Confiure a raspbian image with for use inside kitty.
-
 This sets up networking to act as an access point, installs [config
 files](https://github.com/kragniz/dot-files) and sets up udev rules for the GPS
 and wind sensor.
-
 With this configuration, the gps appears on `/dev/gps`, the RO Wind on
 `/dev/rowind` and the Arduino on `/dev/arduino`.
->>>>>>> master-holderarduino
 
 Installing
 ----------
 
-<<<<<<< HEAD
 ```bash
 $ git clone https://github.com/abersailbot/kitty-arduino.git
 $ cd kitty-arduino
@@ -82,21 +57,6 @@ Alternately, use make for all the previous steps:
 $ make install
 ```
 
-Licence
--------
-
-This program is free software: you can redistribute it and/or modify it under
-the terms of the GNU General Public License as published by the Free Software
-Foundation, either version 3 of the License, or (at your option) any later
-version.
-
-This program is distributed in the hope that it will be useful, but WITHOUT ANY
-WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
-PARTICULAR PURPOSE.  See the GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License along with
-this program.  If not, see <http://www.gnu.org/licenses/>.
-=======
 Do the following:
 
 ```bash
@@ -109,9 +69,52 @@ Edit [`password`](password) and change the password, then run
 ```bash
 $ sudo ./provision
 ```
->>>>>>> master-holderarduino
 
-sails
+kitty-arduino
+-------------
+
+Code to run on kitty's arduino.
+
+Depends on [CMPS10](https://github.com/kragniz/CMPS10) to interact with the
+compass.
+
+Electronics
+----------
+
+
+Box connectors
+--------------
+
+Plug 1
+  1. Rudder Power (7.2v)
+  2. Rudder Ground
+  3. Rudder Servo Data
+  4. N/C
+  5. N/C
+  6. Multiplexor Power (6v)
+  7. Sail Winch Ground
+  8. Sail Winch Live (7.2v)
+  9. Sail Winch Data
+  10. N/C
+  11. Multiplexor Ground
+  12. N/C
+
+Plug 2
+  1. Wifi Ground
+  2. Wifi Data-
+  3. Wifi Data+
+  4. Wifi Power (5v)
+  5. N/C
+  6. Compass SDA
+  7. Compass Ground
+  8. Rowind Data
+  9. Rowind Ground
+  10. Rowind Power (14.4v)
+  11. Compass SCL
+  12. Compass Power (5v)
+
+
+Sails
 =====
 
 Kitty's sails, made using [Sailcut](http://www.sailcut.com/). Currently two sails planned:
@@ -125,7 +128,7 @@ The sails wrap around the mast, so add an extra 83mm (circumference of the mast)
 Output formats for printing are stored in [output](output).
 
 kitty-hardware [![Creative Commons Attribution 4.0 International License](http://i.creativecommons.org/l/by/4.0/88x31.png)](http://creativecommons.org/licenses/by/4.0/)
-===================================================================================================================================================================
+
 
 Files relating to Kitty's hardware
 
@@ -148,38 +151,3 @@ Weights:
     * base > 29 kilos
     * lid 19 kilos
     * 2.09m x 0.72m x 0.60m
-
-    Electorics
-    ==========
-
-
-    Box connectors
-    --------------
-
-    ###Plug 1
-      1. Rudder Power (7.2v)
-      2. Rudder Ground
-      3. Rudder Servo Data
-      4.
-      5.
-      6. Multiplexor Power (6v)
-      7. Sail Winch Ground
-      8. Sail Winch Live (7.2v)
-      9. Sail Winch Data
-      10.
-      11. Multiplexor Ground
-      12.
-
-    ###Plug 2
-      1. Wifi Ground
-      2. Wifi Data-
-      3. Wifi Data+
-      4. Wifi Power (5v)
-      5.
-      6. Compass SDA
-      7. Compass Ground
-      8. Rowind Data
-      9. Rowind Ground
-      10. Rowind Power (14.4v)
-      11. Compass SCL
-      12. Compass Power (5v)
