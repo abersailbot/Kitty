@@ -1,3 +1,30 @@
+AberSailbot Kitty
+=================
+
+Contents
+--------
+1. Software Stack
+  1. Os Dependencies
+    * Gpsd
+    * Python3
+    * Platformio
+  2. boatd
+    * Driver
+    * Behaviour
+  3. Arduino Interface
+2. Rigging
+  1. Catamaran
+    * High Wind
+    * Low Wind
+3. Electronics
+  1. Captain H. Morgan
+  2. Power Setup
+  3. Rowind Interface
+4. Hull
+
+
+
+
 Hull
 ----
 
@@ -14,6 +41,7 @@ Code to run on kitty's arduino.
 
 Depends on [CMPS10](https://github.com/kragniz/CMPS10) to interact with the
 compass.
+
 =======
 kitty-provisioner
 =================
