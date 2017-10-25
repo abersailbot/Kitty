@@ -1,8 +1,9 @@
-AberSailbot Kitty
-=================
+# AberSailbot Kitty #
 
-Contents
---------
+![kitty](https://raw.githubusercontent.com/abersailbot/kitty-cad/master/kitty.png)
+
+## Contents ##
+
 1.  Software Stack
     1.  Os Dependencies
         *   Gpsd
@@ -22,8 +23,40 @@ Contents
         *   Low Wind
 4.  Hull
 
-kitty-provisioner
------------------
+# Software Stack #
+
+## OS Dependencies ##
+
+### GPSD ###
+
+Gpsd is an open source GPS interface daemon that provides a standard interface to many GPS modules. We use it to talk to the A2200-A on captian morgan over Serial.
+
+#### Installation ####
+
+    sudo apt install gpsd
+
+### Python3 ###
+
+Python is the primary language our control system is writen in, we use python 3 so we need to get the python3 and python3-dev packages
+
+#### Installation ####
+
+    sudo apt install python3 python3-dev
+
+### Platformio ###
+
+Platformio is the software we use to deploy code to the Arduino.
+
+#### Installation ####
+
+    pip install -U platformio
+
+
+# WARNING #
+
+## From this point on documentation is outdated and may not be accurate ##
+
+## kitty-provisioner ##
 
 Confiure a raspbian image with for use inside kitty.
 This sets up networking to act as an access point, installs [config
@@ -32,8 +65,8 @@ and wind sensor.
 With this configuration, the gps appears on `/dev/gps`, the RO Wind on
 `/dev/rowind` and the Arduino on `/dev/arduino`.
 
-Installing
-----------
+## Installing ##
+
 
 ```bash
 $ git clone https://github.com/abersailbot/kitty-arduino.git
@@ -70,20 +103,17 @@ Edit [`password`](password) and change the password, then run
 $ sudo ./provision
 ```
 
-kitty-arduino
--------------
+## kitty-arduino ##
 
 Code to run on kitty's arduino.
 
 Depends on [CMPS10](https://github.com/kragniz/CMPS10) to interact with the
 compass.
 
-Electronics
-----------
+## Electronics ##
 
 
-Box connectors
---------------
+## Box connectors ##
 
 Plug 1
   1. Rudder Power (7.2v)
@@ -114,8 +144,7 @@ Plug 2
   12. Compass Power (5v)
 
 
-Sails
-=====
+# Sails #
 
 Kitty's sails, made using [Sailcut](http://www.sailcut.com/). Currently two sails planned:
 
@@ -137,7 +166,7 @@ This currently contains:
 *   [Sails](sails) - Files for the sails
 *   [Hull](hull) - Files used in the construction of the hull
 
-![kitty](https://raw.githubusercontent.com/abersailbot/kitty-cad/master/kitty.png)
+
 
 Unless specified otherwise, the files contained within are licenced under [CC BY
 4.0](http://creativecommons.org/licenses/by/4.0/). See [COPYING](COPYING) for
