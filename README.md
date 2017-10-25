@@ -119,11 +119,11 @@ Sails
 
 Kitty's sails, made using [Sailcut](http://www.sailcut.com/). Currently two sails planned:
 
-  * `heavy_air.saildef` - for heavy winds
-  * `light_air.saildef` - for light winds
+*   `heavy_air.saildef` - for heavy winds
+*   `light_air.saildef` - for light winds
 
 The sails wrap around the mast, so add an extra 83mm (circumference of the mast)
-+ 40mm (leech hem) from the mast edge of the sail.
+\+ 40mm (leech hem) from the mast edge of the sail.
 
 Output formats for printing are stored in [output](output).
 
@@ -134,8 +134,8 @@ Files relating to Kitty's hardware
 
 This currently contains:
 
-  * [Sails](sails) - Files for the sails
-  * [Hull](hull) - Files used in the construction of the hull
+*   [Sails](sails) - Files for the sails
+*   [Hull](hull) - Files used in the construction of the hull
 
 ![kitty](https://raw.githubusercontent.com/abersailbot/kitty-cad/master/kitty.png)
 
@@ -144,10 +144,9 @@ Unless specified otherwise, the files contained within are licenced under [CC BY
 the full licence.
 
 Weights:
-  * Boat with most of the stuff in - 13 kilos
-  * Keel - 15 kilos
-
-  * box:
-    * base > 29 kilos
-    * lid 19 kilos
-    * 2.09m x 0.72m x 0.60m
+*   Boat with most of the stuff in - 13 kilos
+*   Keel - 15 kilos
+*   box:a
+    *   base > 29 kilos
+    *   lid 19 kilos
+    *   2.09m x 0.72m x 0.60m
