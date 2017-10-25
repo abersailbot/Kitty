@@ -9,6 +9,7 @@
         *   Gpsd
         *   Python3
         *   Platformio
+        *   Other Utilities
     2.  boatd
         *   Driver
         *   Behaviour
@@ -51,6 +52,16 @@ Platformio is the software we use to deploy code to the Arduino.
 
     pip install -U platformio
 
+### Other Utilities ###
+
+There are several other useful tools and Utilities used on the boats.
+*   tmux: tmux allows for session persistence and multiple concurrent shell sessions, acting like a simple window manager.
+*   fish: fish is a very convenient shell that allows for case insensitive tab completion and other quality of life tweaks.
+*   dtrx: dtrx or "do the right extraction" is a useful extraction utility that
+allows the use of one command to extract many types of archives.
+*   htop: htop is a powerful resource manager, similar to task manager in windoes.
+
+
 
 # WARNING #
 
@@ -68,40 +79,34 @@ With this configuration, the gps appears on `/dev/gps`, the RO Wind on
 ## Installing ##
 
 
-```bash
-$ git clone https://github.com/abersailbot/kitty-arduino.git
-$ cd kitty-arduino
-$ git submodule init
-$ git submodule update
-```
+
+    $ git clone https://github.com/abersailbot/kitty-arduino.git
+    $ cd kitty-arduino
+    $ git submodule init
+    $ git submodule update
 
 Now, if ino tool is installed correctly (if you're using
 [kitty-provisioner](https://github.com/abersailbot/kitty-provisioner) this is
 done for you), you can compile with:
 
-```bash
-$ ino build
-$ ino upload
-```
+
+    $ ino build
+    $ ino upload
 
 Alternately, use make for all the previous steps:
 
-```bash
-$ make install
-```
+
+    $ make install
 
 Do the following:
 
-```bash
-$ git clone https://github.com/abersailbot/kitty-provisioner.git
-$ cd kitty-provisioner
-```
+    $ git clone https://github.com/abersailbot/kitty-provisioner.git
+    $ cd kitty-provisioner
 
 Edit [`password`](password) and change the password, then run
 
-```bash
-$ sudo ./provision
-```
+    $ sudo ./provision
+
 
 ## kitty-arduino ##
 
@@ -115,7 +120,7 @@ compass.
 
 ## Box connectors ##
 
-Plug 1
+### Plug 1 ###
   1. Rudder Power (7.2v)
   2. Rudder Ground
   3. Rudder Servo Data
@@ -129,7 +134,7 @@ Plug 1
   11. Multiplexor Ground
   12. N/C
 
-Plug 2
+### Plug 2 ###
   1. Wifi Ground
   2. Wifi Data-
   3. Wifi Data+
